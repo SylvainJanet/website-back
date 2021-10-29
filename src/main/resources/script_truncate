@@ -1,0 +1,15 @@
+Use mywebsite;
+
+SET FOREIGN_KEY_CHECKS=0;
+
+TRUNCATE TABLE website_main_menu;
+TRUNCATE TABLE website_main_menu_item;
+TRUNCATE TABLE webpage_category_main;
+TRUNCATE TABLE languaged_string;
+
+TRUNCATE TABLE languaged_string_strings;
+TRUNCATE TABLE website_main_menu_item_subitems;
+TRUNCATE TABLE website_main_menu_items;
+
+
+SET FOREIGN_KEY_CHECKS=1;
