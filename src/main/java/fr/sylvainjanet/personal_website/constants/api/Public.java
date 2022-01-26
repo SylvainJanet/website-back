@@ -6,8 +6,8 @@ public class Public {
 
 	public static final String LISTENTITYDTO_XMLROOT = "listEntity";
 
-	public static final String LANGUAGED_STRING_NAME = "languagedString";
-	public static final String WEBPAGE_CATEGORY_MAIN_NAME = "webpageCategoryMain";
-	public static final String WEBSITE_MAIN_MENU_NAME = "websiteMainMenu";
-	public static final String WEBSITE_MAIN_MENU_ITEM_NAME = "websiteMainMenuItem";
+	public static final String LOCALIZED_STRING_NAME = "localizedString";
+	public static final String PAGE = "page";
+	public static final String MENU = "menu";
+	public static final String MENU_ITEM = "menuItem";
 }

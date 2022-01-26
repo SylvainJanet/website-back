@@ -23,7 +23,7 @@ public abstract class MyEntity implements Serializable {
 	public MyEntity() {
 	}
 
-	public MyEntity(int id, int version) {
+	public MyEntity(long id, int version) {
 		this.id = id;
 		this.version = version;
 	}

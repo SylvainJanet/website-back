@@ -24,31 +24,32 @@ import com.ibatis.common.jdbc.ScriptRunner;
 
 import fr.sylvainjanet.personal_website.constants.api.Public;
 import fr.sylvainjanet.personal_website.constants.api.uri.PublicUriInitDb;
-import fr.sylvainjanet.personal_website.constants.languages.Languages.SupportedLanguages;
-import fr.sylvainjanet.personal_website.entities.LanguagedString;
-import fr.sylvainjanet.personal_website.entities.WebPageCategoryMain;
-import fr.sylvainjanet.personal_website.entities.WebsiteMainMenu;
-import fr.sylvainjanet.personal_website.entities.WebsiteMainMenuItem;
-import fr.sylvainjanet.personal_website.repositories.LanguagedStringRepository;
-import fr.sylvainjanet.personal_website.repositories.WebPageCategoryMainRepository;
-import fr.sylvainjanet.personal_website.repositories.WebsiteMainMenuItemRepository;
-import fr.sylvainjanet.personal_website.repositories.WebsiteMainMenuRepository;
+import fr.sylvainjanet.personal_website.constants.languages.Languages.SupportedLanguage;
+import fr.sylvainjanet.personal_website.constants.menu.MenuType;
+import fr.sylvainjanet.personal_website.entities.LocalizedString;
+import fr.sylvainjanet.personal_website.entities.Menu;
+import fr.sylvainjanet.personal_website.entities.MenuItem;
+import fr.sylvainjanet.personal_website.entities.Page;
+import fr.sylvainjanet.personal_website.repositories.LocalizedStringRepository;
+import fr.sylvainjanet.personal_website.repositories.MenuItemRepository;
+import fr.sylvainjanet.personal_website.repositories.MenuRepository;
+import fr.sylvainjanet.personal_website.repositories.PageRepository;
 
 @RestController
 @RequestMapping(PublicUriInitDb.CONTROLLER)
 public class InitDbController {
 
 	@Autowired
-	private LanguagedStringRepository languagedStringRepository;
+	private LocalizedStringRepository localizedStringRepository;
 
 	@Autowired
-	private WebPageCategoryMainRepository webPageCategoryMainRepository;
+	private PageRepository pageRepository;
 
 	@Autowired
-	private WebsiteMainMenuItemRepository websiteMainMenuItemRepository;
+	private MenuItemRepository menuItemRepository;
 
 	@Autowired
-	private WebsiteMainMenuRepository websiteMainMenuRepository;
+	private MenuRepository menuRepository;
 
 	@Value("${spring.datasource.driver-class-name}")
 	private String jdbcDriver;
@@ -91,147 +92,166 @@ public class InitDbController {
 			}
 		}
 
-		LanguagedString ls1_1 = new LanguagedString(new HashMap<SupportedLanguages, String>() {
+		LocalizedString ls1_1 = new LocalizedString(new HashMap<SupportedLanguage, String>() {
 			private static final long serialVersionUID = 9146089942369517544L;
 
 			{
-				put(SupportedLanguages.FRENCH, "valeur 1_1");
-				put(SupportedLanguages.ENGLISH, "value 1_1");
+				put(SupportedLanguage.FRENCH, "valeur 1_1");
+				put(SupportedLanguage.ENGLISH, "value 1_1");
 			}
 		});
-		LanguagedString ls1_2 = new LanguagedString(new HashMap<SupportedLanguages, String>() {
+		LocalizedString ls1_2 = new LocalizedString(new HashMap<SupportedLanguage, String>() {
 			private static final long serialVersionUID = 6292166558712874461L;
 
 			{
-				put(SupportedLanguages.FRENCH, "valeur 1_2");
-				put(SupportedLanguages.ENGLISH, "value 1_2");
+				put(SupportedLanguage.FRENCH, "valeur 1_2");
+				put(SupportedLanguage.ENGLISH, "value 1_2");
 			}
 		});
-		LanguagedString ls2_1 = new LanguagedString(new HashMap<SupportedLanguages, String>() {
+		LocalizedString ls2_1 = new LocalizedString(new HashMap<SupportedLanguage, String>() {
 			private static final long serialVersionUID = 2523551466465919948L;
 
 			{
-				put(SupportedLanguages.FRENCH, "valeur 2_1");
-				put(SupportedLanguages.ENGLISH, "value 2_1");
+				put(SupportedLanguage.FRENCH, "valeur 2_1");
+				put(SupportedLanguage.ENGLISH, "value 2_1");
 			}
 		});
-		LanguagedString ls2_2 = new LanguagedString(new HashMap<SupportedLanguages, String>() {
+		LocalizedString ls2_2 = new LocalizedString(new HashMap<SupportedLanguage, String>() {
 			private static final long serialVersionUID = 420240115271120190L;
 
 			{
-				put(SupportedLanguages.FRENCH, "valeur 2_2");
-				put(SupportedLanguages.ENGLISH, "value 2_2");
+				put(SupportedLanguage.FRENCH, "valeur 2_2");
+				put(SupportedLanguage.ENGLISH, "value 2_2");
 			}
 		});
-		LanguagedString ls3_1 = new LanguagedString(new HashMap<SupportedLanguages, String>() {
+		LocalizedString ls3_1 = new LocalizedString(new HashMap<SupportedLanguage, String>() {
 			private static final long serialVersionUID = -8907943915001430429L;
 
 			{
-				put(SupportedLanguages.FRENCH, "valeur 3_1");
-				put(SupportedLanguages.ENGLISH, "value 3_1");
+				put(SupportedLanguage.FRENCH, "valeur 3_1");
+				put(SupportedLanguage.ENGLISH, "value 3_1");
 			}
 		});
-		LanguagedString ls3_2 = new LanguagedString(new HashMap<SupportedLanguages, String>() {
+		LocalizedString ls3_2 = new LocalizedString(new HashMap<SupportedLanguage, String>() {
 			private static final long serialVersionUID = 2383879285779473764L;
 
 			{
-				put(SupportedLanguages.FRENCH, "valeur 3_2");
-				put(SupportedLanguages.ENGLISH, "value 3_2");
+				put(SupportedLanguage.FRENCH, "valeur 3_2");
+				put(SupportedLanguage.ENGLISH, "value 3_2");
 			}
 		});
-		LanguagedString ls4_1 = new LanguagedString(new HashMap<SupportedLanguages, String>() {
+		LocalizedString ls4_1 = new LocalizedString(new HashMap<SupportedLanguage, String>() {
 			private static final long serialVersionUID = -8907943915001430429L;
 
 			{
-				put(SupportedLanguages.FRENCH, "valeur 4_1");
-				put(SupportedLanguages.ENGLISH, "value 4_1");
+				put(SupportedLanguage.FRENCH, "valeur 4_1");
+				put(SupportedLanguage.ENGLISH, "value 4_1");
 			}
 		});
-		LanguagedString ls4_2 = new LanguagedString(new HashMap<SupportedLanguages, String>() {
+		LocalizedString ls4_2 = new LocalizedString(new HashMap<SupportedLanguage, String>() {
 			private static final long serialVersionUID = 2383879285779473764L;
 
 			{
-				put(SupportedLanguages.FRENCH, "valeur 4_2");
-				put(SupportedLanguages.ENGLISH, "value 4_2");
+				put(SupportedLanguage.FRENCH, "valeur 4_2");
+				put(SupportedLanguage.ENGLISH, "value 4_2");
 			}
 		});
 
-		LanguagedString ls_mit_1 = new LanguagedString(new HashMap<SupportedLanguages, String>() {
+		LocalizedString ls_mit_1 = new LocalizedString(new HashMap<SupportedLanguage, String>() {
 			private static final long serialVersionUID = -5473579365765801112L;
 
 			{
-				put(SupportedLanguages.FRENCH, "titre 1");
-				put(SupportedLanguages.ENGLISH, "title 1");
+				put(SupportedLanguage.FRENCH, "titre 1");
+				put(SupportedLanguage.ENGLISH, "title 1");
 			}
 		});
 
-		LanguagedString ls_mit_2 = new LanguagedString(new HashMap<SupportedLanguages, String>() {
+		LocalizedString ls_mit_2 = new LocalizedString(new HashMap<SupportedLanguage, String>() {
 			private static final long serialVersionUID = 970818789158530257L;
 
 			{
-				put(SupportedLanguages.FRENCH, "titre 2");
-				put(SupportedLanguages.ENGLISH, "title 2");
+				put(SupportedLanguage.FRENCH, "titre 2");
+				put(SupportedLanguage.ENGLISH, "title 2");
 			}
 		});
 
-		LanguagedString ls_mit_3 = new LanguagedString(new HashMap<SupportedLanguages, String>() {
+		LocalizedString ls_mit_3 = new LocalizedString(new HashMap<SupportedLanguage, String>() {
 			private static final long serialVersionUID = 9080418004335389664L;
 
 			{
-				put(SupportedLanguages.FRENCH, "titre 3");
-				put(SupportedLanguages.ENGLISH, "title 3");
+				put(SupportedLanguage.FRENCH, "titre 3");
+				put(SupportedLanguage.ENGLISH, "title 3");
 			}
 		});
 
-		LanguagedString ls_mit_4 = new LanguagedString(new HashMap<SupportedLanguages, String>() {
+		LocalizedString ls_mit_4 = new LocalizedString(new HashMap<SupportedLanguage, String>() {
 			private static final long serialVersionUID = -7769327884238044610L;
 
 			{
-				put(SupportedLanguages.FRENCH, "titre 4");
-				put(SupportedLanguages.ENGLISH, "title 4");
+				put(SupportedLanguage.FRENCH, "titre 4");
+				put(SupportedLanguage.ENGLISH, "title 4");
 			}
 		});
 
-		WebPageCategoryMain page1 = new WebPageCategoryMain(ls1_1, ls1_2);
-		WebPageCategoryMain page2 = new WebPageCategoryMain(ls2_1, ls2_2);
-		WebPageCategoryMain page3 = new WebPageCategoryMain(ls3_1, ls3_2);
-		WebPageCategoryMain page4 = new WebPageCategoryMain(ls4_1, ls4_2);
+		Page page1 = new Page(ls1_1, ls1_2);
+		Page page2 = new Page(ls2_1, ls2_2);
+		Page page3 = new Page(ls3_1, ls3_2);
+		Page page4 = new Page(ls4_1, ls4_2);
 
-		WebsiteMainMenuItem mi1 = new WebsiteMainMenuItem(page1, ls_mit_1);
-		WebsiteMainMenuItem mi4 = new WebsiteMainMenuItem(page4, ls_mit_4);
-		WebsiteMainMenuItem mi3 = new WebsiteMainMenuItem(new ArrayList<WebsiteMainMenuItem>(Arrays.asList(mi4)), page3,
-				ls_mit_3);
-		WebsiteMainMenuItem mi2 = new WebsiteMainMenuItem(new ArrayList<WebsiteMainMenuItem>(Arrays.asList(mi3)), page2,
-				ls_mit_2);
-		WebsiteMainMenuItem mi5 = new WebsiteMainMenuItem(page1, ls_mit_1);
-		WebsiteMainMenuItem mi6 = new WebsiteMainMenuItem(new ArrayList<WebsiteMainMenuItem>(Arrays.asList(mi4)), page2,
-				ls_mit_2);
-		WebsiteMainMenuItem mi7 = new WebsiteMainMenuItem(new ArrayList<WebsiteMainMenuItem>(Arrays.asList(mi3)), page2,
-				ls_mit_2);
-		
-		
-		WebsiteMainMenu m1 = new WebsiteMainMenu(new ArrayList<WebsiteMainMenuItem>(Arrays.asList(mi1, mi2,mi5,mi6,mi7)));
+//		MenuItem mi1 = new MenuItem(page1, ls_mit_1);
+//		MenuItem mi4 = new MenuItem(page4, ls_mit_4);
+//		MenuItem mi3 = new MenuItem(new ArrayList<MenuItem>(Arrays.asList(mi4)), page3, ls_mit_3);
+//		MenuItem mi2 = new MenuItem(new ArrayList<MenuItem>(Arrays.asList(mi3)), page2, ls_mit_2);
+//		MenuItem mi5 = new MenuItem(page1, ls_mit_1);
+//		MenuItem mi6 = new MenuItem(new ArrayList<MenuItem>(Arrays.asList(mi4)), page2, ls_mit_2);
+//		MenuItem mi7 = new MenuItem(new ArrayList<MenuItem>(Arrays.asList(mi3)), page2, ls_mit_2);
 
-		List<WebsiteMainMenu> menus = new ArrayList<WebsiteMainMenu>(Arrays.asList(m1));
-		List<WebsiteMainMenuItem> menuitems = new ArrayList<WebsiteMainMenuItem>(Arrays.asList(mi1, mi4, mi3, mi2,mi5,mi6,mi7));
-		List<WebPageCategoryMain> pages = new ArrayList<WebPageCategoryMain>(Arrays.asList(page1, page2, page3, page4));
-		List<LanguagedString> strings = new ArrayList<LanguagedString>(Arrays.asList(ls1_1, ls1_2, ls2_1, ls2_2, ls3_1,
+		MenuItem mi1 = new MenuItem(new ArrayList<MenuItem>(), 0, 0, 0L, ls_mit_1, page1);
+		MenuItem mi2_1 = new MenuItem(new ArrayList<MenuItem>(), 1, 0, 0L, ls_mit_3, page3);
+		MenuItem mi2_2 = new MenuItem(new ArrayList<MenuItem>(), 1, 1, 0L, ls_mit_3, page3);
+		MenuItem mi2 = new MenuItem(new ArrayList<MenuItem>(Arrays.asList(mi2_1, mi2_2)), 0, 1, 0L, ls_mit_2, page2);
+		MenuItem mi3 = new MenuItem(new ArrayList<MenuItem>(), 0, 2, 0L, ls_mit_3, page3);
+		MenuItem mi4_1_1 = new MenuItem(new ArrayList<MenuItem>(), 2, 0, 0L, ls_mit_2, page2);
+		MenuItem mi4_1 = new MenuItem(new ArrayList<MenuItem>(Arrays.asList(mi4_1_1)), 1, 0, 0L, ls_mit_1, page1);
+		MenuItem mi4_2 = new MenuItem(new ArrayList<MenuItem>(), 1, 1, 0L, ls_mit_1, page1);
+		MenuItem mi4 = new MenuItem(new ArrayList<MenuItem>(Arrays.asList(mi4_1, mi4_2)), 0, 3, 0L, ls_mit_4, page4);
+
+		Menu m1 = new Menu(new ArrayList<MenuItem>(Arrays.asList(mi1, mi2, mi3, mi4)), MenuType.MAIN_MENU, 0);
+
+		List<Menu> menus = new ArrayList<Menu>(Arrays.asList(m1));
+		List<MenuItem> menuitems = new ArrayList<MenuItem>(
+				Arrays.asList(mi1, mi2_1, mi2_2, mi2, mi3, mi4_1_1, mi4_1, mi4_2, mi4));
+		List<Page> pages = new ArrayList<Page>(Arrays.asList(page1, page2, page3, page4));
+		List<LocalizedString> strings = new ArrayList<LocalizedString>(Arrays.asList(ls1_1, ls1_2, ls2_1, ls2_2, ls3_1,
 				ls3_2, ls4_1, ls4_2, ls_mit_1, ls_mit_2, ls_mit_3, ls_mit_4));
 
-		for (LanguagedString s : strings) {
-			languagedStringRepository.saveAndFlush(s);
+		for (LocalizedString s : strings) {
+			LocalizedString saved = localizedStringRepository.saveAndFlush(s);
+			s.setId(saved.getId());
+			s.setVersion(saved.getVersion());
 		}
 
-		for (WebPageCategoryMain page : pages) {
-			webPageCategoryMainRepository.saveAndFlush(page);
+		for (Page page : pages) {
+			Page saved = pageRepository.saveAndFlush(page);
+			page.setId(saved.getId());
+			page.setVersion(saved.getVersion());
 		}
 
-		for (WebsiteMainMenuItem i : menuitems) {
-			websiteMainMenuItemRepository.saveAndFlush(i);
+		for (MenuItem i : menuitems) {
+			MenuItem saved = menuItemRepository.saveAndFlush(i);
+			i.setId(saved.getId());
+			i.setVersion(saved.getVersion());
 		}
 
-		for (WebsiteMainMenu m : menus) {
-			websiteMainMenuRepository.saveAndFlush(m);
+		for (Menu m : menus) {
+			Menu saved = menuRepository.saveAndFlush(m);
+			m.setId(saved.getId());
+			m.setVersion(saved.getVersion());
+		}
+
+		for (MenuItem i : menuitems) {
+			i.setMenuId(menus.get(0).getId());
+			menuItemRepository.saveAndFlush(i);
 		}
 
 		return ResponseEntity.status(HttpStatus.OK).body(Public.INITDB_RESET_OK);

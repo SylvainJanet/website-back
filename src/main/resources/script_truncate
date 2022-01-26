@@ -2,14 +2,14 @@ Use mywebsite;
 
 SET FOREIGN_KEY_CHECKS=0;
 
-TRUNCATE TABLE website_main_menu;
-TRUNCATE TABLE website_main_menu_item;
-TRUNCATE TABLE webpage_category_main;
-TRUNCATE TABLE languaged_string;
+TRUNCATE TABLE menu;
+TRUNCATE TABLE menu_item;
+TRUNCATE TABLE page;
+TRUNCATE TABLE localized_string;
 
-TRUNCATE TABLE languaged_string_strings;
-TRUNCATE TABLE website_main_menu_item_subitems;
-TRUNCATE TABLE website_main_menu_items;
+TRUNCATE TABLE localized_string_strings;
+TRUNCATE TABLE menu_item_sub_items;
+TRUNCATE TABLE menu_items;
 
 
 SET FOREIGN_KEY_CHECKS=1;
